@@ -12,8 +12,22 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      # render the form again 
+      # render the form again
     end
+  end
+
+  def edit
+    # @post = Post.where(id:params[:id]).first
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.where(id: params[:id]).first
+    if @post.update(post_params)
+      redirect_to posts_path
+    else
+      # render the form again
+    end  
   end
 
   private
