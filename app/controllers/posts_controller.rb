@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.order("updated_at DESC")
   end
 
   def new
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       # render the form again
-    end  
+    end
   end
 
   private
