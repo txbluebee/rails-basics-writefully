@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def show
+    @post = Post.where(id: params[:id]).first
+  end
+
   def create
     @post = Post.new(post_params)
     if @post.save
@@ -24,6 +28,15 @@ class PostsController < ApplicationController
   def update
     @post = Post.where(id: params[:id]).first
     if @post.update(post_params)
+      redirect_to posts_path
+    else
+      # render the form again
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
       redirect_to posts_path
     else
       # render the form again
