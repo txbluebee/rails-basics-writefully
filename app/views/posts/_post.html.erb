@@ -1,16 +1,8 @@
-<div class="post col-md-8 col-md-offset-2">
-  <h2> <%= link_to post.title, post_path(post) %> </h2>
-  <p> <%= post.body %></p>
-  <p>
-    <%= link_to "Edit", edit_post_path(post) %>
-    <%= link_to "Delete", post_path(post),
-                             :data => {:confirm => "You sure?",
-                                       :method => "delete"} %>
-  </p>
-  <p>Comment(<%= post.comments.count %>)</p>
-  <ul>
+<h2> <%= link_to post.title, post_path(post) %> </h2>
+<p> <%= post.body %></p>
+<p>Comment(<%= post.comments.count %>)</p>
+<ul>
   <% post.tags.each do |tag| %>
     <li><%= tag.name %></li>
   <% end %>
 </ul>
-</div>
