@@ -10,6 +10,13 @@
 
   <body>
     <div id="main" class="container">
+      <% if current_user %>
+        <%= current_user.email %>
+        <%= link_to 'Sign Out', session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_session_path %>
+        <%= link_to "Sing Up", new_user_path %>
+      <% end %>
       <%= yield %>
     </div>
   </body>
