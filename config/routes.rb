@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   root to: 'posts#index'
 
-  resources :users, only: [:create]
-  resource :session, only: [:create]
+  namespace :auth do
+    resources :users, only: [:create]
+    resource :session, only: [:create]
+    resource :confirmation
+  end  
 
-  resource :confirmation
+  get 'login' => 'auth/sessions#new'
+  delete 'logout' => 'auth/sessions#destroy'
 
-  get 'login' => 'sessions#new'
-  delete 'logout' => 'sessions#destroy'
-
-  get 'register' => 'users#new'
+  get 'register' => 'auth/users#new'
 
 
   resource :session, only: [:create]
