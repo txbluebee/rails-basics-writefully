@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   resource :session, only: [:create]
 
-  resources :confirmation
+  resource :confirmation
 
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
