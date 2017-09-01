@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   root to: 'posts#index'
 
-  resources :users
+  resources :users, only: [:create]
+  resource :session, only: [:create]
 
-  resource :session
+  get 'login' => 'sessions#new'
+  delete 'logout' => 'sessions#destroy'
+
+  get 'register' => 'users#new'
+
+
+  resource :session, only: [:create]
 
   resources :posts do
     resources :comments
